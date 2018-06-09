@@ -1,0 +1,32 @@
+---
+# Launch instances, runs some tasks
+# and then terminate them
+
+- name: Create a sandbox instance
+  hosts: localhost
+  connection: local
+  gather_facts: False
+  roles:
+    - create
+  tags:
+    - create
+
+
+- name: Configure instance(s)
+  hosts: launched
+  sudo: True
+  remote_user: ubuntu
+  gather_facts: False
+  roles:
+    - example
+  tags:
+    - config
+
+- name: Terminate instances
+  hosts: launched
+  gather_facts: False
+  connection: local
+  roles:
+    - delete
+  tags:
+    - delete

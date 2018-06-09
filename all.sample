@@ -1,0 +1,65 @@
+---
+# Access/Secret keys created from AWS Control Panel
+# (hint: use a new user for this)
+# (hint2: never EVER push this to a repo)
+#
+access_key: <pls keep very secret>
+secret_key: <pls keep very secret>
+
+# Email sent as notification
+# hint: comment at least mail_to to exclude mail sending
+#
+#mail_to: name1@email
+#mail_from: name2@email
+#mail_host: smtp.email
+
+# Needed for MQTT notifications
+#
+mqtt_server: broker.hostname.com
+mqtt_root: ansible/notify
+mqtt_user: <pls keep very secret>
+mqtt_pwd: <pls keep very secret>
+
+
+# List of instances
+#
+ec2create:
+  instances:
+    - id: 0
+      # Key pair available in ~/.ssh that you want
+      # the instance to be configured with, for
+      # later access with:
+      # ssh ubuntu@ip_address
+      #
+      keypair: name@email
+      # Needed for spot instance only
+      #
+      spot_price: 0.02
+      spot_wait_timeout: 600
+      # Needed in all cases
+      #
+      count: 1
+      instance_type: m1.small
+      security_group: sg-5cd55a39
+      image: ami-5da23a2a
+      region: eu-west-1
+      subnet: subnet-4b3a6f0d
+    - id: 1
+      # Key pair available in ~/.ssh that you want
+      # the instance to be configured with, for
+      # later access with:
+      # ssh ubuntu@ip_address
+      #
+      keypair: name@email
+      # Needed for spot instance only
+      #
+      spot_price: 0.02
+      spot_wait_timeout: 600
+      # Needed in all cases
+      #
+      count: 2
+      instance_type: m1.small
+      security_group: sg-5cd55a39
+      image: ami-5da23a2a
+      region: eu-west-1
+      subnet: subnet-4b3a6f0d
